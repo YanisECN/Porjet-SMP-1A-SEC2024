@@ -1,5 +1,3 @@
 Projet bataille navale SEC2024
 
-Test
-
-C. Jouin, C. Guidon, Y. Keto 
+C. Jouin, C. Guidon, C. D'Ardhuy, Y. Keto 
