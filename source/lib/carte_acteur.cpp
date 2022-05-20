@@ -86,3 +86,40 @@ void Carte_acteur::PlacerBateau(int coordx, int coordy, type_bateau bateau, orie
         }
     }
 }
+
+void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
+    std::cout << "\t";
+    for(int x = 0; x < CARTE_X; x++){
+        std::cout << x << "\t";
+    }
+    std::cout << std::endl;
+
+    for(int y = 0; y < CARTE_Y; y++){
+        std::cout << y << "\t";
+        for(int x = 0; x < CARTE_X; x++){
+            if(type == TIR_RATE){
+                if((carte -> GetCase(x, y)) == type){
+                    std::cout << caractere << "\t";
+                } else if((carte -> GetCase(x, y)) == PARTIE_BATEAU_DETRUITE){
+                    std::cout << "O" << "\t";
+                } else {
+                    std::cout << "\t";
+                }
+            } else {
+                if((carte -> GetCase(x, y)) == type){
+                    std::cout << caractere << "\t";
+                } else {
+                    std::cout << "\t";
+                }
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
+void Carte_acteur :: AffichierCarte(){
+    std::cout << "Carte des tirs : " << std::endl;
+    AfficherTypeCase(TIR_RATE,'X');
+    std::cout << "Carte de la flotte : " << std::endl;
+    AfficherTypeCase(PARTIE_BATEAU,'X');
+}

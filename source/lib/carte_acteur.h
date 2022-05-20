@@ -16,6 +16,9 @@ class Carte_acteur{
     void PlacerBateau(int coordx, int coordy, type_bateau bateau, orientation orientation);
 
     bool isColliding(int coordx, int coordy, orientation orientation, int longueur);
+
+    void AfficherTypeCase(type_case type, char caractere);
+    void AffichierCarte();
 };
 
 #endif
