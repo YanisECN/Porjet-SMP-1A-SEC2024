@@ -6,7 +6,7 @@
 #define CARTE_Y 10
 
 class Carte{
-    protected : 
+    private : 
         type_case cases[CARTE_X][CARTE_Y] = {MER};
 
     public :
