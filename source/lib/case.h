@@ -1,6 +1,7 @@
 #ifndef case_H
 
 enum type_case{
+    CASE_NULL,
     MER,
     TIR_RATE,
     PARTIE_BATEAU,
