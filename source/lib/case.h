@@ -1,4 +1,5 @@
 #ifndef case_H
+#define case_H
 
 enum type_case{
     CASE_NULL,
