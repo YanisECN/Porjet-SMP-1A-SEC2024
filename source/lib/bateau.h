@@ -1,6 +1,7 @@
 #include <map>
 
 #ifndef bateau_H
+#define bateau_H
 
 enum type_bateau{
     PETIT,

@@ -1,11 +1,13 @@
+#ifndef carte_acteur_H
+#define carte_acteur_H
+
 #include "carte.h"
 #include "bateau.h"
 #include "orientation.h"
 
-#ifndef carte_acteur_H
-
 class Carte_acteur{
 
+    public:
     Carte * carte;
 
     //Constructeur

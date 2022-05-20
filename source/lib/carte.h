@@ -1,6 +1,7 @@
-#include "case.h"
-
 #ifndef carte_H
+#define carte_H
+
+#include "case.h"
 
 #define CARTE_X 10
 #define CARTE_Y 10
