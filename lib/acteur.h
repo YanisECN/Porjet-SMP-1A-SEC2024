@@ -1,9 +1,8 @@
-#include "bateau.h"
-#define acteur_h
-#include "carte.h"
-#include "carte_acteur.h"
-#include <iostream>
+#ifndef ACTEUR_H
+#define ACTEUR_H
 
+#include <iostream>
+#include "carte_acteur.h"
 using namespace std;
 
 class acteur
@@ -17,5 +16,7 @@ public:
     // Méthodes
     virtual void Attaquer();
     virtual void Placerbateaux(type_bateau bateau);
-
+    Carte_acteur* Getcarte()  {return  CarteActeur;}
 };
+
+#endif

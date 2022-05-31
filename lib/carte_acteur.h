@@ -1,9 +1,16 @@
-#ifndef carte_acteur_H
-#define carte_acteur_H
+#ifndef carte_acteur_h
+#define carte_acteur_h
 
 #include "carte.h"
 #include "bateau.h"
 #include "orientation.h"
+
+enum orientation{
+    NORD,
+    EST,
+    SUD,
+    OUEST,
+};
 
 class Carte_acteur{
 

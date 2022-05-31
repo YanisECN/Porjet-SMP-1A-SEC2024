@@ -1,4 +1,19 @@
 #include "../lib/joueur.h"
+#include "../lib/orientation.h"
+
+#include <iostream>;
+
+enum orientation{
+    NORD,
+    EST,
+    SUD,
+    OUEST,
+};
+
+
+joueur::joueur(Carte * Carte) : acteur(Carte){
+  this -> CarteActeur  = new Carte_acteur(Carte);
+}
 
 void acteur::Attaquer(){
   int attx, atty;
@@ -13,7 +28,7 @@ void acteur::Attaquer(){
 void acteur::Placerbateaux(type_bateau bateau){
   int x,y;
   int orient;
-  orientation orientation;
+  orientation ation;
   
   std::cout << "Coordonnée du bateau en x :" << endl;
   std::cin >> x;
@@ -25,17 +40,17 @@ void acteur::Placerbateaux(type_bateau bateau){
   switch (orient)
   {
     case 0:
-      orientation = NORD;
+      ation = orientation::NORD;
       break;
     case 1:
-      orientation = EST;
+      ation = orientation::EST;
       break;
     case 2:
-      orientation = SUD;
+      ation = orientation::SUD;
       break;
     default:    // Ouest (default)
-      orientation = OUEST;
+      ation = orientation::OUEST;
       break;
   }
-  this -> CarteActeur -> PlacerBateau(x, y, bateau, orientation);
+  this -> CarteActeur -> PlacerBateau(x, y, bateau, ation);
 }

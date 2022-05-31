@@ -1,5 +1,5 @@
-#ifndef carte_H
-#define carte_H
+#ifndef carte_h
+#define carte_h
 
 #include "case.h"
 

@@ -1,5 +1,6 @@
-#ifndef orientation_H
-#define orientation_H
+#define orientation_h
+#ifndef orientation_h
+
 
 enum orientation{
     NORD,

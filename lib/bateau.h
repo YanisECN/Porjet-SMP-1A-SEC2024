@@ -1,18 +1,18 @@
-#include <map>
-
-#ifndef bateau_H
-#define bateau_H
+#ifndef bateau_h
+#define bateau_h
 
 enum type_bateau{
-    PETIT,
-    MOYEN,
-    GRAND
+    porte_avion,
+    croiseur,
+    contre_torpilleur, 
+    torpilleur
 };
 
 std::map<type_bateau, int> longueurs_bateau = {
-    {PETIT, 1},
-    {MOYEN, 2},
-    {GRAND, 3}
+    {porte_avion, 5},
+    {croiseur, 4},
+    {contre_torpilleur, 3}
+    {torpilleur, 2}
 };
 
 #endif
