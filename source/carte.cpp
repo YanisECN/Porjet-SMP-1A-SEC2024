@@ -1,4 +1,4 @@
-#include "carte.h"
+#include "../lib/carte.h"
 
 Carte::Carte(){
     //Do nothing

@@ -1,8 +1,8 @@
-#include "carte_acteur.h"
+#include "../lib/carte_acteur.h"
 #include <iostream>
 
 Carte_acteur::Carte_acteur(Carte * carte_principale){
-    this->carte =  carte_principale;
+    this -> carte = carte_principale;
 }
 
 void Carte_acteur::Attaquer(int coordx, int coordy){

@@ -1,13 +1,17 @@
-all : bataille_navale
+main.out : main.o acteur.o carte_acteur.o carte.o joueur.o
+	g++ -o main.out main.o carte_acteur.o acteur.o carte.o joueur.o
 
-rebuild : clean all
+main.o: source/main.cpp
+	g++ -c  source/main.cpp
 
-bataille_navale : main.o
-	g++ -o bataille_navale main.o -g
+carte_acteur.o : source/carte_acteur.cpp
+	g++ -c source/carte_acteur.cpp
 
-main.o : source/main.cpp
-	g++ -o main.o -c source/main.cpp -g
+carte.o: source/carte.cpp
+	g++ -c source/carte.cpp
 
+acteur.o: source/acteur.cpp
+	g++ -c source/acteur.cpp
 
-clean :
-	del *.o
+joueur.o : source/joueur.cpp
+	g++ -c source/joueur.cpp
