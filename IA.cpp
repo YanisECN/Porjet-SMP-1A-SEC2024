@@ -264,3 +264,94 @@ bool jeu::verifIAOrientation(grille *g,int orgX,int orgY,int orientation){
 	return retour;
 }
 
+void jeu::placerbateau(regles *r){
+
+	int compteur = 0;
+
+	this->listeBatimentsIA = new batiment*[r->totalBateaux/2];
+
+	srand(time(NULL));
+
+	for(int i = 0;i<r->nombrePorteAvions/2;i++){		
+
+
+		this->listeBatimentsIA[i] = new porteAvion(r->longueurPorteAvion,i+1,2,true);
+
+
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[i]);
+			*this->carteIA += *this->listeBatimentsIA[i];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+
+
+		compteur++;
+
+	}
+
+	for(int i = 0;i<r->nombreCroiseurs/2;i++){
+		
+		this->listeBatimentsIA[compteur] = new croiseur(r->longueurCroiseurs,i+1,2,true);
+
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+
+		compteur++;
+
+
+	}
+
+	for(int i = 0;i<r->nombreContreTorpilleurs/2;i++){
+
+	
+		this->listeBatimentsIA[compteur] = new contreTorpilleur(r->longueurContreTorpilleurs,i+1,2,true);
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+		compteur++;
+
+
+	}
+
+	for(int i = 0;i<r->nombreSousMarins/2;i++){
+
+		
+		this->listeBatimentsIA[compteur] = new sousMarin(r->longueurSousMarins,i+1,2,true);
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+		compteur++;
+
+
+	}
+
+	for(int i = 0;i<r->nombreTorpilleurs/2;i++){
+
+		this->listeBatimentsIA[compteur] = new torpilleur(r->longueurTorpilleurs,i+1,2,true);
+
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+		compteur++;
+	}
+
+}
