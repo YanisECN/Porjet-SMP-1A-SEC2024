@@ -13,9 +13,9 @@ private:
     Carte_acteur * CarteActeur; 
 public:
     // Constructeur
-    Acteur(Carte * Carte);
+    acteur(Carte * Carte);
     // Méthodes
     virtual void Attaquer();
-    virtual void Placerbateaux( type_bateau bateau);
+    virtual void Placerbateaux(type_bateau bateau);
 
 };
