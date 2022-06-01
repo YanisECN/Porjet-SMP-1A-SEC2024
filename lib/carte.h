@@ -8,7 +8,7 @@
 
 class Carte{
     private : 
-        type_case cases[CARTE_X][CARTE_Y] = {MER};
+        type_case cases[CARTE_X][CARTE_Y];
 
     public :
         //Constructeur

@@ -1,8 +1,8 @@
-#include "..//source//lib//bateau.h"
-#include "..//source//lib//carte.h"
-#include "..//source//lib//carte_acteur.h"
-#include "..//source//lib//case.h"
-#include "..//source//lib//orientation.h"
+#include "bateau.h"
+#include "carte.h"
+#include "carte_acteur.h"
+#include "case.h"
+#include "orientation.h"
 #include <iostream>
 
 using namespace std;

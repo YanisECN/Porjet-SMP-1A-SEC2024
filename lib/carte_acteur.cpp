@@ -39,6 +39,7 @@ bool Carte_acteur::isColliding(int coordx, int coordy, orientation orientation, 
         switch (orientation)
         {
         case NORD:
+            std::cout << "Longueur : " << longueur << ", case type : " << carte -> GetCase(coordx, coordy + i) << ", " << (coordy + i) <<std::endl;
             if(CARTE_Y <= (coordy + i) || carte -> GetCase(coordx, coordy + i) != MER){
                 return true;
             }
@@ -60,30 +61,34 @@ bool Carte_acteur::isColliding(int coordx, int coordy, orientation orientation, 
             break;
         }
     }
+
+    return false;
 }
 
 void Carte_acteur::PlacerBateau(int coordx, int coordy, type_bateau bateau, orientation orientation){
 
-    int longueur = longueurs_bateau[bateau];
+    int longueur = longueurs_bateau.at(bateau);
 
     if(!isColliding(coordx, coordy, orientation, longueur)){
         for(int i = 0; i < longueur; i++){
             switch (orientation)
             {
             case NORD:
-                carte -> SetCase(coordx, coordy + 1, PARTIE_BATEAU);
+                carte -> SetCase(coordx, coordy + i, PARTIE_BATEAU);
                 break;
             case EST:
-                carte -> SetCase(coordx - 1, coordy, PARTIE_BATEAU);
+                carte -> SetCase(coordx - i, coordy, PARTIE_BATEAU);
                 break;
             case SUD:
-                carte -> SetCase(coordx, coordy - 1, PARTIE_BATEAU);
+                carte -> SetCase(coordx, coordy - i, PARTIE_BATEAU);
                 break;
             default:    // Ouest (default)
-                carte -> SetCase(coordx + 1, coordy, PARTIE_BATEAU);
+                carte -> SetCase(coordx + i, coordy, PARTIE_BATEAU);
                 break;
             }
         }
+    } else {
+        std::cout << "ERROR! Collision!" << std::endl;
     }
 }
 
@@ -98,6 +103,14 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
         std::cout << y << "\t";
         for(int x = 0; x < CARTE_X; x++){
             if(type == TIR_RATE){
+                if((carte -> GetCase(x, y)) == type){
+                    std::cout << caractere << "\t";
+                } else if((carte -> GetCase(x, y)) == PARTIE_BATEAU_DETRUITE){
+                    std::cout << "O" << "\t";
+                } else {
+                    std::cout << "\t";
+                }
+            } else if(type == PARTIE_BATEAU){
                 if((carte -> GetCase(x, y)) == type){
                     std::cout << caractere << "\t";
                 } else if((carte -> GetCase(x, y)) == PARTIE_BATEAU_DETRUITE){

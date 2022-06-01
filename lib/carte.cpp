@@ -2,6 +2,11 @@
 
 Carte::Carte(){
     //Do nothing
+    for(int y = 0; y < CARTE_Y; y++){
+        for(int x = 0; x < CARTE_X; x++){
+            cases[x][y] = MER;
+        }
+    }
 }
 
 const type_case Carte::GetCase(int coordx, int coordy){

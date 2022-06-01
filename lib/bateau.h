@@ -9,7 +9,7 @@ enum type_bateau{
     GRAND
 };
 
-std::map<type_bateau, int> longueurs_bateau = {
+const std::map<type_bateau, int> longueurs_bateau = {
     {PETIT, 1},
     {MOYEN, 2},
     {GRAND, 3}
