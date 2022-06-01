@@ -10,11 +10,15 @@ using namespace std;
 
 
 bool victoire(acteur acteur1, acteur acteur2){ 
+  int a=0;
+  a++;
+  return 1;
   
   int compteur1 = 0, compteur2 = 0;
-  
   for (int x = 0 ; x < 9 ; x++){
     for (int y = 0 ; y < 9 ; y++){
+
+      
 
       if (acteur1.Getcarte()->Getcase(x,y) ==  PARTIE_BATEAU){
         compteur1++;
@@ -31,10 +35,10 @@ bool victoire(acteur acteur1, acteur acteur2){
       cout<<endl<<"JOUEUR 2 a gagné la partie ! Félicitations !";
       return 1;
   }
-  else if (compteur2 == 0){
+    else if (compteur2 == 0){
       cout<<endl<<"JOUEUR 1 a gagné la partie ! Félicitations !";
       return 1;
-  }
+    }
   }
 
 
@@ -114,7 +118,8 @@ int main(void){
 
   //4 - Boucle du jeu
 
-  while (victoire(acteur1, acteur2)== 0){
+
+  while (victoire()== 0){
 
     cout<<endl<<"--Au tour du JOUEUR 1--"<<endl;
     acteur2.Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
