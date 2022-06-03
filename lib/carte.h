@@ -17,6 +17,7 @@ class Carte{
         //Accesseurs
         const type_case GetCase(int coordx, int coordy);
         int SetCase(int coordx, int coordy, type_case new_type);
+        
 };
 
 #endif

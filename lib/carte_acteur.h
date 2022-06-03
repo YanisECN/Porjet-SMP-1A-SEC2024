@@ -5,12 +5,6 @@
 #include "bateau.h"
 #include "orientation.h"
 
-enum orientation{
-    NORD,
-    EST,
-    SUD,
-    OUEST,
-};
 
 class Carte_acteur{
 
@@ -28,6 +22,9 @@ class Carte_acteur{
 
     void AfficherTypeCase(type_case type, char caractere);
     void AffichierCarte();
-};
+    const type_case Getcase(int x, int y)  {return carte->GetCase(x,y);}
+      
+      };
+
 
 #endif

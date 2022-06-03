@@ -1,10 +1,11 @@
 #ifndef ACTEUR_H
 #define ACTEUR_H
-
+using namespace std;
 #include <iostream>
 #include "carte_acteur.h"
-using namespace std;
 
+
+//test
 class acteur
 {
 private:
@@ -16,7 +17,7 @@ public:
     // Méthodes
     virtual void Attaquer();
     virtual void Placerbateaux(type_bateau bateau);
-    Carte_acteur* Getcarte()  {return  CarteActeur;}
+    Carte_acteur * Getcarte()  {return  CarteActeur;}
 };
 
 #endif

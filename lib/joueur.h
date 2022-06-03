@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "acteur.h"
-#include "orientation.h"
 
 class joueur : public acteur{
 private:
