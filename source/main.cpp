@@ -6,7 +6,6 @@ using namespace std;
 #include "../lib/carte.h"
 #include "../lib/case.h"
 #include "../lib/joueur.h"
-#include "../lib/orientation.h"
 
 
 bool victoire(acteur acteur1, acteur acteur2){ 
@@ -57,8 +56,8 @@ int main(void){
     //}
   
   //if (mode==1){
-    joueur acteur1;
-    joueur acteur2;
+    joueur acteur1 (&carte_principale);
+    joueur acteur2 (&carte_principale);
     //}
 
 
