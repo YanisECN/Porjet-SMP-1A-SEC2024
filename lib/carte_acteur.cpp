@@ -38,7 +38,7 @@ bool Carte_acteur::isColliding( int coordx, int coordy, orientation orientation,
     for(int i = 0; i < longueur; i++){
         switch (orientation)
         {
-        case NORD:
+        case SUD:
             std::cout << "Longueur : " << longueur << ", case type : " << carte -> GetCase(map_id, coordx, coordy + i) << ", " << (coordy + i) <<std::endl;
             if(CARTE_Y <= (coordy + i) || carte -> GetCase(map_id,coordx, coordy + i) != MER){
                 return true;
@@ -49,7 +49,7 @@ bool Carte_acteur::isColliding( int coordx, int coordy, orientation orientation,
                 return true;
             }
             break;
-        case SUD:
+        case NORD:
             if(0 > (coordy - i) || carte -> GetCase(map_id, coordx, coordy - i) != MER){
                 return true;
             }
@@ -72,13 +72,13 @@ void Carte_acteur::PlacerBateau(int coordx, int coordy, type_bateau bateau, orie
         for(int i = 0; i < longueur; i++){
             switch (orientation)
             {
-            case NORD:
+            case SUD:
                 carte -> SetCase(map_id, coordx, coordy + i, PARTIE_BATEAU);
                 break;
             case OUEST:
                 carte -> SetCase(map_id, coordx - i, coordy, PARTIE_BATEAU);
                 break;
-            case SUD:
+            case NORD:
                 carte -> SetCase(map_id, coordx, coordy - i, PARTIE_BATEAU);
                 break;
             default:    // Ouest (default)
