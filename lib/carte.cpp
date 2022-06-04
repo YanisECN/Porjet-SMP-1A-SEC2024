@@ -1,26 +1,37 @@
 #include "carte.h"
+#include <iostream>
 
 Carte::Carte(){
-    //Do nothing
-    for(int y = 0; y < CARTE_Y; y++){
-        for(int x = 0; x < CARTE_X; x++){
-            cases[x][y] = MER;
-        }
-    }
 }
 
-const type_case Carte::GetCase(int coordx, int coordy){
+const type_case Carte::GetCase(int map_id, int coordx, int coordy){
     if(coordx <= CARTE_X && coordy <= CARTE_Y){
-        return cases[coordx][coordy];
+        return cartes.at(map_id).at(coordy).at(coordx);
     }
     return CASE_NULL;
 }
 
-int Carte::SetCase(int coordx, int coordy, type_case new_type){
+int Carte::SetCase(int map_id, int coordx, int coordy, type_case new_type){
     
     if(coordx <= CARTE_X && coordy <= CARTE_Y){
-        cases[coordx][coordy] = new_type;
+        cartes.at(map_id).at(coordy).at(coordx) = new_type;
         return 0;
     }
     return -1;
+}
+
+void Carte::AddActeur(int * map_id){
+    *map_id = cartes.size() + 1;
+    vector<vector<type_case>> cases(CARTE_Y, vector<type_case>(CARTE_X, MER));
+    cout << "taille y : " <<cases.size() << ", taille x : " << cases.size() << endl;
+    this -> cartes.insert({*map_id, cases});
+}
+
+int Carte::GetCarteEnemyId(int map_id) {
+    std::map<int, vector<vector<type_case>>>::iterator iterator;
+    for(iterator = this -> cartes.begin(); iterator != this -> cartes.end(); iterator++){
+        if(iterator->first != map_id){
+            return iterator->first;
+        }
+    }
 }

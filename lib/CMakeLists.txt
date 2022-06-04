@@ -1,1 +1,0 @@
-add_library(carte_acteur.cpp carte.cpp)

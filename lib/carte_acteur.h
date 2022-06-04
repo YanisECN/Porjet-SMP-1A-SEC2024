@@ -4,14 +4,18 @@
 #include "carte.h"
 #include "bateau.h"
 #include "orientation.h"
+#include <vector>
+#include <iostream>
 
 class Carte_acteur{
 
-    public:
+    private :
+    int map_id = -1;
     Carte * carte;
 
+    public :
     //Constructeur
-    Carte_acteur(Carte * carte_principale);
+    Carte_acteur(Carte * carte);
 
     //Fonctions
     void Attaquer(int coordx, int coordy);

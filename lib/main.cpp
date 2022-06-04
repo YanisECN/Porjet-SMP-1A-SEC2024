@@ -7,6 +7,8 @@
 
 #include "carte.h"
 #include "carte_acteur.h"
+#include "acteur.h"
+#include "joueur.h"
 #include <iostream>
 
 using namespace std;
@@ -15,14 +17,17 @@ int main(void){
     cout << "Debut" << endl;
     Carte * carte = new Carte();
 
-    Carte_acteur * CarteActeur = new Carte_acteur(carte);
-    CarteActeur->AffichierCarte();
+    acteur * joueur1 = new joueur(carte);
+    acteur * joueur2 = new joueur(carte);
 
-    CarteActeur->PlacerBateau(4,4, GRAND, NORD);
-    CarteActeur->Attaquer(4,6);
-    CarteActeur->Attaquer(5,6);
-
-    CarteActeur->AffichierCarte();
+    std::cout << "Placement du bateau du joueur 1" << std::endl;
+    joueur1->Placerbateaux(MOYEN);
+    joueur1->Getcarte()->AffichierCarte();
+    std::cout << "Tir du joueur 2 sur le bateau du joueur 1" << std::endl;
+    joueur2->Attaquer();
+    joueur2->Getcarte()->AffichierCarte();
+    std::cout << "Affichage de la carte du joueur 1 maintenant" << std::endl;
+    joueur1->Getcarte()->AffichierCarte();
 
     return 0;
 }
