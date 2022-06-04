@@ -44,7 +44,7 @@ bool Carte_acteur::isColliding( int coordx, int coordy, orientation orientation,
                 return true;
             }
             break;
-        case EST:
+        case OUEST:
             if(0 > (coordx - i) || carte -> GetCase(map_id, coordx - i, coordy) != MER){
                 return true;
             }
@@ -75,7 +75,7 @@ void Carte_acteur::PlacerBateau(int coordx, int coordy, type_bateau bateau, orie
             case NORD:
                 carte -> SetCase(map_id, coordx, coordy + i, PARTIE_BATEAU);
                 break;
-            case EST:
+            case OUEST:
                 carte -> SetCase(map_id, coordx - i, coordy, PARTIE_BATEAU);
                 break;
             case SUD:
