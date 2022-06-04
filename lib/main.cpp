@@ -41,6 +41,19 @@ bool victoire(acteur acteur1, acteur acteur2){
   }
 }
 
+void Clear()
+{
+#if defined _WIN32
+    system("cls");
+    //clrscr(); // including header file : conio.h
+#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+    system("clear");
+    //std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences 
+#elif defined (__APPLE__)
+    system("clear");
+#endif
+}
+
 int main(void){
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;
@@ -54,66 +67,70 @@ int main(void){
     joueur acteur2 (&carte_principale);
 
     //2 - Placement des bateaux Acteur 1
-  
+    Clear();
     cout<<endl<<"--JOUEUR 1--"<<endl;
   
-    acteur1.Getcarte()->AffichierCarte();
+    acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le porte avion (5 cases)"<<endl;
     acteur1.Placerbateaux(PORTE_AVIONS);
-
-    acteur1.Getcarte()->AffichierCarte();
+    Clear();
+    acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le croiseur (4 cases)"<<endl;
     acteur1.Placerbateaux(CROISSEUR);
-
-    acteur1.Getcarte()->AffichierCarte();
+    Clear();
+    acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le premier contre-torpilleur (3 cases)"<<endl;
     acteur1.Placerbateaux(CONTRE_TORPILLEUR);
-
-    acteur1.Getcarte()->AffichierCarte();
+    Clear();
+    acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le second contre-torpilleur (3 cases)"<<endl;
     acteur1.Placerbateaux(CONTRE_TORPILLEUR);
-
-    acteur1.Getcarte()->AffichierCarte();
+    Clear();
+    acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le torpilleur (2) cases)"<<endl;
     acteur1.Placerbateaux(TORPILLEUR);
+    acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
 
 
     //3 - Placement des bateaux Acteur 2
-
+    Clear();
     cout<<endl<<"--JOUEUR 2--"<<endl;
   
-    acteur2.Getcarte()->AffichierCarte();
+    acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le porte avion (5 cases)"<<endl;
     acteur2.Placerbateaux(PORTE_AVIONS);
-
-    acteur2.Getcarte()->AffichierCarte();
+    Clear();
+    acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le croiseur (4 cases)"<<endl;
     acteur2.Placerbateaux(CROISSEUR);
-
-    acteur2.Getcarte()->AffichierCarte();
+    Clear();
+    acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le premier contre-torpilleur (3 cases)"<<endl;
     acteur2.Placerbateaux(CONTRE_TORPILLEUR);
-
-    acteur2.Getcarte()->AffichierCarte();
+    Clear();
+    acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le second contre-torpilleur (3 cases)"<<endl;
     acteur2.Placerbateaux(CONTRE_TORPILLEUR);
-
-    acteur2.Getcarte()->AffichierCarte();
+    Clear();
+    acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
     cout<<endl<<"Placez le torpilleur (2) cases)"<<endl;
     acteur2.Placerbateaux(TORPILLEUR);
+    acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
 
 
     //4 - Boucle du jeu
 
     while (victoire(acteur1, acteur2)== 0){
-        cout<<endl<<"--Au tour du JOUEUR 1--"<<endl;
-        acteur1.Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+        Clear();
+        cout<<"--Au tour du JOUEUR 1--"<<endl;
+        acteur1.Getcarte()->AffichierCarte();
         acteur1.Attaquer();
-        acteur1.Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
-        cout<<endl<<"--Au tour du JOUEUR 2--"<<endl;
-        acteur2.Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+        acteur1.Getcarte()->AffichierCarte();
+        Clear();
+        cout<<"--Au tour du JOUEUR 2--"<<endl;
+        acteur2.Getcarte()->AffichierCarte();
         acteur2.Attaquer();
-        acteur2.Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+        acteur2.Getcarte()->AffichierCarte();
     }
 
     return 0;

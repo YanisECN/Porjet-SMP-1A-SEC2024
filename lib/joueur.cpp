@@ -5,12 +5,18 @@ joueur::joueur(Carte * carte) : acteur(carte){
 }
 
 void joueur::Attaquer(){
-  int attx, atty;
+  char attx; 
+  int atty;
   std::cout << "C'est l'heure de l'attaque" << endl;
   std::cout << "Attaque x" << endl;
   std::cin >> attx; 
   std::cout << "Attaque y" << endl;
   std::cin >> atty; 
+  if(attx >= 'A' && attx <= 'Z'){
+    attx -= 'A';
+  } else if(attx >= 'a' && attx <= 'z'){
+    attx -= 'a';
+  }
   this ->  CarteActeur->Attaquer(attx, atty);
 }
 
