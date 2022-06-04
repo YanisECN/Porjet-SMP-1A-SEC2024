@@ -10,6 +10,7 @@
 #include "acteur.h"
 #include "joueur.h"
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -53,8 +54,22 @@ void Clear()
     system("clear");
 #endif
 }
-
+void sleep(float seconds){
+    clock_t startClock = clock();
+    float secondsAhead = seconds * CLOCKS_PER_SEC;
+    // do nothing until the elapsed time has passed.
+    while(clock() < startClock+secondsAhead);
+    return;
+}
 int main(void){
+
+    //0 - Ecran d'introduction
+    for(int i = 0; i < 10; i++){
+        Clear();
+        cout << "timer (" << 10-i << ")" << endl;
+        sleep(1.0);
+    }
+
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;
   
