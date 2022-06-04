@@ -59,23 +59,23 @@ int main(void){
   
     acteur1.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le porte avion (5 cases)"<<endl;
-    acteur1.Placerbateaux(GRAND);
+    acteur1.Placerbateaux(PORTE_AVIONS);
 
     acteur1.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le croiseur (4 cases)"<<endl;
-    acteur1.Placerbateaux(MOYEN);
+    acteur1.Placerbateaux(CROISSEUR);
 
     acteur1.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le premier contre-torpilleur (3 cases)"<<endl;
-    acteur1.Placerbateaux(MOYEN);
+    acteur1.Placerbateaux(CONTRE_TORPILLEUR);
 
     acteur1.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le second contre-torpilleur (3 cases)"<<endl;
-    acteur1.Placerbateaux(PETIT);
+    acteur1.Placerbateaux(CONTRE_TORPILLEUR);
 
     acteur1.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le torpilleur (2) cases)"<<endl;
-    acteur1.Placerbateaux(PETIT);
+    acteur1.Placerbateaux(TORPILLEUR);
 
 
     //3 - Placement des bateaux Acteur 2
@@ -84,23 +84,23 @@ int main(void){
   
     acteur2.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le porte avion (5 cases)"<<endl;
-    acteur2.Placerbateaux(GRAND);
+    acteur2.Placerbateaux(PORTE_AVIONS);
 
     acteur2.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le croiseur (4 cases)"<<endl;
-    acteur2.Placerbateaux(MOYEN);
+    acteur2.Placerbateaux(CROISSEUR);
 
     acteur2.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le premier contre-torpilleur (3 cases)"<<endl;
-    acteur2.Placerbateaux(MOYEN);
+    acteur2.Placerbateaux(CONTRE_TORPILLEUR);
 
     acteur2.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le second contre-torpilleur (3 cases)"<<endl;
-    acteur2.Placerbateaux(PETIT);
+    acteur2.Placerbateaux(CONTRE_TORPILLEUR);
 
     acteur2.Getcarte()->AffichierCarte();
     cout<<endl<<"Placez le torpilleur (2) cases)"<<endl;
-    acteur2.Placerbateaux(PETIT);
+    acteur2.Placerbateaux(TORPILLEUR);
 
 
     //4 - Boucle du jeu

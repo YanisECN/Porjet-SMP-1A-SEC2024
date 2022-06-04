@@ -15,7 +15,8 @@ void joueur::Attaquer(){
 }
 
 void joueur::Placerbateaux(type_bateau bateau){
-  int x,y;
+  char x;
+  int y;
   int orient;
   orientation ation;
   
@@ -40,6 +41,11 @@ void joueur::Placerbateaux(type_bateau bateau){
     default:    // Ouest (default)
       ation = orientation::OUEST;
       break;
+  }
+  if(x >= 'A' && x <= 'Z'){
+    x -= 'A';
+  } else if(x >= 'a' && x <= 'z'){
+    x -= 'a';
   }
   this -> CarteActeur -> PlacerBateau(x, y, bateau, ation);
 }

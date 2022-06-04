@@ -94,7 +94,7 @@ void Carte_acteur::PlacerBateau(int coordx, int coordy, type_bateau bateau, orie
 void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
     std::cout << "\t";
     for(int x = 0; x < CARTE_X; x++){
-        std::cout << x << "\t";
+        std::cout << char('A' + x) << " ";
     }
     std::cout << std::endl;
 
@@ -103,27 +103,28 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
         for(int x = 0; x < CARTE_X; x++){
             if(type == TIR_RATE){
                 if((carte -> GetCase(map_id, x, y)) == type){
-                    std::cout << caractere << "\t";
+                    std::cout << caractere;
                 } else if((carte -> GetCase(map_id, x, y)) == TIR_REUSSI){
-                    std::cout << "O" << "\t";
+                    std::cout << (char)176u;
                 } else {
-                    std::cout << "\t";
+                    std::cout << "~";
                 }
             } else if(type == PARTIE_BATEAU){
                 if((carte -> GetCase(map_id, x, y)) == type){
-                    std::cout << caractere << "\t";
+                    std::cout << (char)178u;
                 } else if((carte -> GetCase(map_id, x, y)) == PARTIE_BATEAU_DETRUITE){
-                    std::cout << "O" << "\t";
+                    std::cout << (char)176u;
                 } else {
-                    std::cout << "\t";
+                    std::cout << "~";
                 }
             } else {
                 if((carte -> GetCase(map_id, x, y)) == type){
-                    std::cout << caractere << "\t";
+                    std::cout << caractere;
                 } else {
-                    std::cout << "\t";
+                    std::cout << "~";
                 }
             }
+            std::cout << " ";
         }
         std::cout << std::endl;
     }
@@ -133,7 +134,7 @@ void Carte_acteur :: AffichierCarte(){
     std::cout << "Carte des tirs : " << std::endl;
     AfficherTypeCase(TIR_RATE,'X');
     std::cout << "Carte de la flotte : " << std::endl;
-    AfficherTypeCase(PARTIE_BATEAU,'X');
+    AfficherTypeCase(PARTIE_BATEAU, 'X');
 }
 
 vector<vector<type_case>> Carte_acteur::GetCarte(){

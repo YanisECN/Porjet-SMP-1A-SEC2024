@@ -4,15 +4,17 @@
 #define bateau_H
 
 enum type_bateau{
-    PETIT,
-    MOYEN,
-    GRAND
+    PORTE_AVIONS,
+    CROISSEUR,
+    CONTRE_TORPILLEUR,
+    TORPILLEUR
 };
 
 const std::map<type_bateau, int> longueurs_bateau = {
-    {PETIT, 1},
-    {MOYEN, 2},
-    {GRAND, 3}
+    {PORTE_AVIONS, 5},
+    {CROISSEUR, 4},
+    {CONTRE_TORPILLEUR, 3},
+    {TORPILLEUR,2}
 };
 
 #endif
