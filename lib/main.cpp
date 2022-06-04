@@ -9,7 +9,9 @@
 #include "carte_acteur.h"
 #include "acteur.h"
 #include "joueur.h"
+#include "particles.h"
 #include <iostream>
+#include <vector>
 #include <ctime>
 
 using namespace std;
@@ -63,12 +65,21 @@ void sleep(float seconds){
 }
 int main(void){
 
+    Particle_grid particles = Particle_grid();
+    vector<char> missile{ ' ','<', '=', '~', '-'};
+    particles.spawn_particle(missile, {-1, 0}, 5, 9, 4 );
+
+    cout << "Starting..." <<endl;
+
     //0 - Ecran d'introduction
     for(int i = 0; i < 10; i++){
+        particles.update_grid();
         Clear();
+        particles.display_grid();
         cout << "timer (" << 10-i << ")" << endl;
         sleep(1.0);
     }
+    sleep(10.0);
 
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;

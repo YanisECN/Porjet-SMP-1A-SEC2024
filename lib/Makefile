@@ -5,8 +5,8 @@ clean :
 
 rebuild : clean all
 
-prgm : main.o carte.o carte_acteur.o acteur.o joueur.o
-	g++ -o prgm.exe main.o carte.o carte_acteur.o acteur.o joueur.o
+prgm : main.o carte.o carte_acteur.o acteur.o joueur.o particles.o
+	g++ -o prgm.exe main.o carte.o carte_acteur.o acteur.o joueur.o particles.o
 
 main.o : main.cpp
 	g++ -o main.o -c main.cpp
@@ -22,3 +22,6 @@ acteur.o : acteur.cpp
 
 joueur.o : joueur.cpp 
 	g++ -o joueur.o -c joueur.cpp 
+
+particles.o : particles.cpp 
+	g++ -o particles.o -c particles.cpp 
