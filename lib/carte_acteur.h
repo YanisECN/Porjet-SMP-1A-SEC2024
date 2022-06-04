@@ -7,6 +7,8 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 class Carte_acteur{
 
     private :
@@ -25,6 +27,8 @@ class Carte_acteur{
 
     void AfficherTypeCase(type_case type, char caractere);
     void AffichierCarte();
+
+    vector<vector<type_case>> GetCarte();
 };
 
 #endif

@@ -24,6 +24,8 @@ class Carte{
 
         void AddActeur(int * map_id);
         int GetCarteEnemyId(int map_id);
+
+        vector<vector<type_case>> GetCarte(int map_id) const;
 };
 
 #endif

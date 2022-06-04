@@ -35,3 +35,7 @@ int Carte::GetCarteEnemyId(int map_id) {
         }
     }
 }
+
+vector<vector<type_case>> Carte::GetCarte(int map_id) const{
+    return cartes.at(map_id);
+}

@@ -135,3 +135,7 @@ void Carte_acteur :: AffichierCarte(){
     std::cout << "Carte de la flotte : " << std::endl;
     AfficherTypeCase(PARTIE_BATEAU,'X');
 }
+
+vector<vector<type_case>> Carte_acteur::GetCarte(){
+    return carte->GetCarte(map_id);
+}
