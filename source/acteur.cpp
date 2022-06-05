@@ -1,6 +1,13 @@
-#include "../lib/acteur.h"
+#include "acteur.h"
 
+acteur::acteur(Carte * carte){
+  this -> CarteActeur = new Carte_acteur(carte);
+}
 
-acteur::acteur(Carte * Carte){
-  this -> CarteActeur  = new Carte_acteur(Carte);
+void acteur::Attaquer(){
+  cout << "Attaque non définie !" << endl;
+}
+
+void acteur::Placerbateaux(type_bateau bateau){
+  cout << "Placement des bateaux non défini !" << endl;
 }
