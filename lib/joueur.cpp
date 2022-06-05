@@ -25,7 +25,7 @@ void joueur::Attaquer(){
     this->Getcarte()->Clear_console();
     cout << CARTE_X - 1 - attx <<endl;
     particle_system->update_grid();
-    this->Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+    this->Getcarte()->AffichierCarte();
     this->Getcarte()->sleep_anim(.25);
   }
   this->Getcarte()->Clear_console();
@@ -50,13 +50,13 @@ void joueur::Attaquer(){
    
     while(particle_system->isAnimationRunning()){
       particle_system->update_grid();
-      this->Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+      this->Getcarte()->AffichierCarte();
       this->Getcarte()->sleep_anim(.25);
       this->Getcarte()->Clear_console();
     }
   }
 
-  this->Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+  this->Getcarte()->AffichierCarte();
   this->Getcarte()->sleep_anim(.50);
 }
 

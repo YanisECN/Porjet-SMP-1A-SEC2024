@@ -105,7 +105,7 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
     for(int y = 0; y < CARTE_Y; y++){
         std::cout << y << "\t";
         for(int x = 0; x < CARTE_X; x++){
-            if((particles->isAnimationRunning()) && particles->GetParticleAtLocation(x, y).alive){
+            if((particles->isAnimationRunning()) && particles->GetParticleAtLocation(x, y).alive && type == TIR_RATE){
                 std::cout << particles->GetParticleAtLocation(x, y).ASCII_frames[particles->GetParticleAtLocation(x, y).current_frame];
             }else if(type == TIR_RATE){
                 if((carte -> GetCase(map_id, x, y)) == type){
