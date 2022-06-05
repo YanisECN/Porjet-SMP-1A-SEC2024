@@ -72,6 +72,7 @@ void ia::Placerbateaux(type_bateau bateau){
 
   
   orient = rand()%(3 - 0) + 3;
+  
   switch (orient)
   {
     case 0:
@@ -87,6 +88,7 @@ void ia::Placerbateaux(type_bateau bateau){
       ation = orientation::OUEST;
       break;
   }
+  
   if(x >= 'A' && x <= 'Z'){
     x -= 'A';
   } else if(x >= 'a' && x <= 'z'){

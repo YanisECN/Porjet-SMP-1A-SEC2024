@@ -1,18 +1,18 @@
-
-#include "joueur.h"
+#include "IA.h"
 #include "orientation.h"
+#include <cstdlib>
 
-joueur::joueur(Carte * carte) : acteur(carte){
+ia::ia(Carte * carte) : acteur(carte){
 }
 
-void joueur::Attaquer(){
+void ia::Attaquer(){
   char attx; 
   int atty;
-  std::cout << "C'est l'heure de l'attaque" << endl;
-  std::cout << "Attaque x" << endl;
-  std::cin >> attx; 
+  //std::cout << "C'est l'heure de l'attaque" << endl;
+  //std::cout << "Attaque x" << endl;
+  attx=rand()%('Z' - 'A') + 'Z'; 
   std::cout << "Attaque y" << endl;
-  std::cin >> atty; 
+  attx=rand()%(9 - 0) + 9; 
   if(attx >= 'A' && attx <= 'Z'){
     attx -= 'A';
   } else if(attx >= 'a' && attx <= 'z'){
@@ -56,24 +56,22 @@ void joueur::Attaquer(){
       this->Getcarte()->Clear_console();
     }
   }
-  particle_system->reset_particles();
+
   this->Getcarte()->AffichierCarte();
   this->Getcarte()->sleep_anim(.50);
 }
 
-void joueur::Placerbateaux(type_bateau bateau){
+void ia::Placerbateaux(type_bateau bateau){
   char x;
   int y;
   int orient;
   orientation ation;
   
-  std::cout << "Coordonnée du bateau en x :" << endl;
-  std::cin >> x;
-  std::cout << "Coordonnée du bateau en y :" << endl;
-  std::cin >> y;
+  x = rand()%(9 - 0) + 9;
+  y = rand()%(9 - 0) + 9;
 
-  std::cout << "Saisir l'orientation du bateau" << endl << "NORD : 0 | EST : 1 | SUD : 2 | OUEST : 3" << endl;
-  std::cin >> orient;
+  
+  orient = rand()%(3 - 0) + 3;
   switch (orient)
   {
     case 0:
