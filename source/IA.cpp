@@ -108,7 +108,7 @@ bool IA::verifIAOrientation(grille *g,int orgX,int orgY,int orientation){
 	return retour;
 }
 
-void acteur ::Placerbateau(regles *r){
+void acteur ::Placerbateau(type_bateau bateau){
 
 
   int x,y;
