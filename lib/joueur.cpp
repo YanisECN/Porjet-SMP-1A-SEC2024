@@ -34,7 +34,7 @@ void joueur::Attaquer(){
   int rslt = 0;
   rslt = this -> CarteActeur -> Attaquer(attx, atty);
 
-  if(rslt == 1 || rslt == 0){
+  if(rslt == 1){
     vector<char> wave{'@', '~'};
     particle_system->spawn_particle(wave, {-1,0}, 2, attx, atty);
     particle_system->spawn_particle(wave, {1,0}, 2, attx, atty);
