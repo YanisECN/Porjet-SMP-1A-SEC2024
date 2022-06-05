@@ -19,6 +19,93 @@ void acteur::Attaquer(){
   std::cout << " IA Attaque en x... et y..." << endl;
   this ->  CarteActeur->Attaquer(attx, atty);
 
+  /*int x,y,prevX,prevY,prevOrientation=0,orgX,orgY,orientation=0;
+
+bool continues = false,iaTouche = false,essaiOppose=true;
+
+  if(!iaTouche){
+
+				while(!continues){
+
+					y = RAND_NUM(0,this->carteJ->getCase()-1);
+					x = RAND_NUM(0,this->carteJ->getCase()-1);
+
+					if(!this->carteJ->getCase(y,x)->touche)
+						continues=true;
+				}
+				continues=false;		
+
+			}else{
+
+				if(!calcTirIA(x,y,prevX,prevY,orientation)){
+
+					for(int i = 1;i<5;i++){
+						if((i==OUEST && orgX == 0) ||
+							(i==NORD && orgY == 0) ||
+							(i==EST && orgX == this->carteJ->getCase()-1) ||
+							(i==SUD && orgY == this->carteJ->getCase()-1))
+							continue;
+						continues |= verifIAOrientation(this->carteJ,orgX,orgY,i);
+					}
+					continues = !continues;
+
+					if(orientation!=0 && essaiOppose && !continues){
+
+						switch(orientation){
+
+							case NORD: orientation = SUD;break;
+							case SUD: orientation = NORD;break;
+							case OUEST: orientation = EST;break;
+							case EST: orientation = OUEST;break;
+
+						}
+
+					}
+
+					while(!continues){
+
+						if(!essaiOppose)
+							orientation = RAND_NUM(1,4);
+						else
+							essaiOppose = false;
+
+						if((orientation==OUEST && orgX == 0) ||
+							(orientation==NORD && orgY == 0) ||
+							(orientation==EST && orgX == this->carteJ->getNumColonnes()-1) ||
+							(orientation==SUD && orgY == this->carteJ->getNumLignes()-1) ||
+							(orientation==prevOrientation))
+							continue;
+						else{
+							prevX=orgX;
+							prevY=orgY;
+
+							continues = verifIAOrientation(this->carteJ,orgX,orgY,orientation);
+						}
+					}
+					continues=false;
+					prevOrientation = orientation;
+
+				}else{
+
+					prevX=x;
+					prevY=y;
+					essaiOppose = true;			
+
+				}
+			}
+        }
+
+
+
+			cout <<"\nL'IA tire en ("<<x<<" , "<<y<<") \n";
+
+		}
+	}
+
+}
+*/
+
+
 }
 
 
@@ -138,6 +225,92 @@ void acteur ::Placerbateau(regles *r){
       break;
   }
   this -> CarteActeur -> PlacerBateau(x, y, bateau, ation);
+	/*int compteur = 0;
 
+	this->listeBatimentsIA = new batiment*[r->totalBateaux/2];
+
+
+	for(int i = 0;i<r->nombrePorteAvions/2;i++){		
+
+
+		this->listeBatimentsIA[i] = new porteAvion(r->longueurPorteAvion,i+1,2,true);
+
+
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[i]);
+			*this->carteIA += *this->listeBatimentsIA[i];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+
+
+		compteur++;
+
+	}
+
+	for(int i = 0;i<r->nombreCroiseurs/2;i++){
+
+		this->listeBatimentsIA[compteur] = new croiseur(r->longueurCroiseurs,i+1,2,true);
+
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+
+		compteur++;
+
+
+	}
+
+	for(int i = 0;i<r->nombreContreTorpilleurs/2;i++){
+
+	
+		this->listeBatimentsIA[compteur] = new contreTorpilleur(r->longueurContreTorpilleurs,i+1,2,true);
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+		compteur++;
+
+
+	}
+
+	for(int i = 0;i<r->nombreSousMarins/2;i++){
+
+		
+		this->listeBatimentsIA[compteur] = new sousMarin(r->longueurSousMarins,i+1,2,true);
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+		compteur++;
+
+
+	}
+
+	for(int i = 0;i<r->nombreTorpilleurs/2;i++){
+
+		this->listeBatimentsIA[compteur] = new torpilleur(r->longueurTorpilleurs,i+1,2,true);
+
+		do{
+
+			this->carteIA->randomCoordonnee(*this->listeBatimentsIA[compteur]);
+			*this->carteIA += *this->listeBatimentsIA[compteur];
+
+
+		}while(!this->carteIA->ajoutEstValide());
+		compteur++;
+	}
+*/
 
 }
