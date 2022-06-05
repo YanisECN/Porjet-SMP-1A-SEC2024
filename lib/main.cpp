@@ -63,34 +63,21 @@ void sleep(float seconds){
     while(clock() < startClock+secondsAhead);
     return;
 }
+
 int main(void){
 
-    Particle_grid particles = Particle_grid();
-    vector<char> missile{ ' ','<', '=', '~', '-'};
-    particles.spawn_particle(missile, {-1, 0}, 5, 9, 4 );
-
-    cout << "Starting..." <<endl;
-
-    //0 - Ecran d'introduction
-    for(int i = 0; i < 10; i++){
-        particles.update_grid();
-        Clear();
-        particles.display_grid();
-        cout << "timer (" << 10-i << ")" << endl;
-        sleep(1.0);
-    }
-    sleep(10.0);
+    //0 - Ecran d'introduction   
 
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;
-  
+
+    joueur acteur1 (&carte_principale);
+    joueur acteur2 (&carte_principale);
+    
     bool mode = 0;
   
     cout << endl << "Entrez 0 si vous souhaitez jouer contre une IA ou entrez 1 si vous êtes 2 joueurs" << endl;
     cin >> mode;
-
-    joueur acteur1 (&carte_principale);
-    joueur acteur2 (&carte_principale);
 
     //2 - Placement des bateaux Acteur 1
     Clear();
@@ -142,7 +129,6 @@ int main(void){
     cout<<endl<<"Placez le torpilleur (2) cases)"<<endl;
     acteur2.Placerbateaux(TORPILLEUR);
     acteur2.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
-
 
     //4 - Boucle du jeu
 

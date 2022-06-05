@@ -2,36 +2,40 @@
 
 Carte_acteur::Carte_acteur(Carte * carte){
     this->carte = carte;
-    carte->AddActeur(&map_id);
+    carte->AddActeur(&map_id);   
+    this->particles = new Particle_grid();
 }
 
-void Carte_acteur::Attaquer(int coordx, int coordy){
-    if(coordx <= CARTE_X && coordy <= CARTE_Y){
+int Carte_acteur::Attaquer(int coordx, int coordy){
+    int rslt = 0;   // 0 : miss, 1 : success, 
+    if(coordx <= CARTE_X && coordy <= CARTE_Y && coordx >= 0 && coordy >= 0){
         switch (carte -> GetCase(carte->GetCarteEnemyId(map_id), coordx, coordy))
         {
         case PARTIE_BATEAU:
-            std::cout << "Bateau touché !" << std::endl;
+            //std::cout << "Bateau touché !" << std::endl;
             carte -> SetCase(carte->GetCarteEnemyId(map_id),coordx, coordy, PARTIE_BATEAU_DETRUITE);
             carte -> SetCase(map_id, coordx, coordy, TIR_REUSSI);
+            rslt = 1;
             break;
         
         case MER:
-            std::cout << "Tir raté !" << std::endl;
+            //std::cout << "Tir raté !" << std::endl;
             carte -> SetCase(map_id, coordx, coordy, TIR_RATE);
             break;
 
         case TIR_RATE:
-            std::cout << "Vous aviez déja tirer dans l'eau ici !" << std::endl;
+            //std::cout << "Vous aviez déja tirer dans l'eau ici !" << std::endl;
             break;
 
         case PARTIE_BATEAU_DETRUITE:
-            std::cout << "Vous avez déja touché cette partie du bateau ennemi !" << std::endl;
+            //std::cout << "Vous avez déja touché cette partie du bateau ennemi !" << std::endl;
             break;
 
         default:
             break;
         }
     }
+    return rslt;
 }
 
 bool Carte_acteur::isColliding( int coordx, int coordy, orientation orientation, int longueur){
@@ -39,7 +43,7 @@ bool Carte_acteur::isColliding( int coordx, int coordy, orientation orientation,
         switch (orientation)
         {
         case SUD:
-            std::cout << "Longueur : " << longueur << ", case type : " << carte -> GetCase(map_id, coordx, coordy + i) << ", " << (coordy + i) <<std::endl;
+            //std::cout << "Longueur : " << longueur << ", case type : " << carte -> GetCase(map_id, coordx, coordy + i) << ", " << (coordy + i) <<std::endl;
             if(CARTE_Y <= (coordy + i) || carte -> GetCase(map_id,coordx, coordy + i) != MER){
                 return true;
             }
@@ -101,13 +105,15 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
     for(int y = 0; y < CARTE_Y; y++){
         std::cout << y << "\t";
         for(int x = 0; x < CARTE_X; x++){
-            if(type == TIR_RATE){
+            if((particles->isAnimationRunning()) && particles->GetParticleAtLocation(x, y).alive){
+                std::cout << particles->GetParticleAtLocation(x, y).ASCII_frames[particles->GetParticleAtLocation(x, y).current_frame];
+            }else if(type == TIR_RATE){
                 if((carte -> GetCase(map_id, x, y)) == type){
                     std::cout << caractere;
                 } else if((carte -> GetCase(map_id, x, y)) == TIR_REUSSI){
                     std::cout << (char)176u;
                 } else {
-                    std::cout << "~";
+                    std::cout << ".";
                 }
             } else if(type == PARTIE_BATEAU){
                 if((carte -> GetCase(map_id, x, y)) == type){
@@ -115,13 +121,13 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
                 } else if((carte -> GetCase(map_id, x, y)) == PARTIE_BATEAU_DETRUITE){
                     std::cout << (char)176u;
                 } else {
-                    std::cout << "~";
+                    std::cout << ".";
                 }
             } else {
                 if((carte -> GetCase(map_id, x, y)) == type){
                     std::cout << caractere;
                 } else {
-                    std::cout << "~";
+                    std::cout << ".";
                 }
             }
             std::cout << " ";
@@ -139,4 +145,29 @@ void Carte_acteur :: AffichierCarte(){
 
 vector<vector<type_case>> Carte_acteur::GetCarte(){
     return carte->GetCarte(map_id);
+}
+
+Particle_grid * Carte_acteur::GetParticleSystem(){
+    return this->particles;
+}
+
+void Carte_acteur::Clear_console()
+{
+#if defined _WIN32
+    system("cls");
+    //clrscr(); // including header file : conio.h
+#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+    system("clear");
+    //std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences 
+#elif defined (__APPLE__)
+    system("clear");
+#endif
+}
+
+void Carte_acteur::sleep_anim(float seconds){
+    clock_t startClock = clock();
+    float secondsAhead = seconds * CLOCKS_PER_SEC;
+    // do nothing until the elapsed time has passed.
+    while(clock() < startClock+secondsAhead);
+    return;
 }

@@ -17,7 +17,47 @@ void joueur::Attaquer(){
   } else if(attx >= 'a' && attx <= 'z'){
     attx -= 'a';
   }
-  this ->  CarteActeur->Attaquer(attx, atty);
+
+  vector<char> missile{'<', '~', '-'};
+  Particle_grid * particle_system = this -> CarteActeur -> GetParticleSystem();
+  particle_system->spawn_particle(missile, {-1, 0}, CARTE_X - 1 - attx, 9, atty);
+  while(particle_system->isAnimationRunning()){
+    this->Getcarte()->Clear_console();
+    cout << CARTE_X - 1 - attx <<endl;
+    particle_system->update_grid();
+    this->Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+    this->Getcarte()->sleep_anim(.25);
+  }
+  this->Getcarte()->Clear_console();
+  particle_system->reset_particles();
+
+  int rslt = 0;
+  rslt = this -> CarteActeur -> Attaquer(attx, atty);
+
+  if(rslt == 1 || rslt == 0){
+    vector<char> wave{'@', '~'};
+    particle_system->spawn_particle(wave, {-1,0}, 2, attx, atty);
+    particle_system->spawn_particle(wave, {1,0}, 2, attx, atty);
+
+    particle_system->spawn_particle(wave, {0,1}, 2, attx, atty);
+    particle_system->spawn_particle(wave, {0,-1}, 2, attx, atty);
+
+    particle_system->spawn_particle(wave, {-1,-1}, 2, attx, atty);
+    particle_system->spawn_particle(wave, {1,1}, 2, attx, atty);
+
+    particle_system->spawn_particle(wave, {-1,1}, 2, attx, atty);
+    particle_system->spawn_particle(wave, {1,-1}, 2, attx, atty);
+   
+    while(particle_system->isAnimationRunning()){
+      particle_system->update_grid();
+      this->Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+      this->Getcarte()->sleep_anim(.25);
+      this->Getcarte()->Clear_console();
+    }
+  }
+
+  this->Getcarte()->AfficherTypeCase(TIR_RATE, 'X');
+  this->Getcarte()->sleep_anim(.50);
 }
 
 void joueur::Placerbateaux(type_bateau bateau){

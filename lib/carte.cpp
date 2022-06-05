@@ -23,7 +23,7 @@ int Carte::SetCase(int map_id, int coordx, int coordy, type_case new_type){
 void Carte::AddActeur(int * map_id){
     *map_id = cartes.size() + 1;
     vector<vector<type_case>> cases(CARTE_Y, vector<type_case>(CARTE_X, MER));
-    cout << "taille y : " <<cases.size() << ", taille x : " << cases.size() << endl;
+    //cout << "taille y : " <<cases.size() << ", taille x : " << cases.size() << endl;
     this -> cartes.insert({*map_id, cases});
 }
 

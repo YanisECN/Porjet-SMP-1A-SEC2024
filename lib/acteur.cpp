@@ -1,7 +1,7 @@
 #include "acteur.h"
 
 acteur::acteur(Carte * carte){
-  this -> CarteActeur  = new Carte_acteur(carte);
+  this -> CarteActeur = new Carte_acteur(carte);
 }
 
 void acteur::Attaquer(){
