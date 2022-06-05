@@ -29,7 +29,7 @@ class Carte_acteur{
 
     bool isColliding(int coordx, int coordy, orientation orientation, int longueur);
 
-    void AfficherTypeCase(type_case type, char caractere);
+    void AfficherTypeCase(type_case type, char caractere, int id_map = -1);
     void AffichierCarte();
 
     Particle_grid * GetParticleSystem();

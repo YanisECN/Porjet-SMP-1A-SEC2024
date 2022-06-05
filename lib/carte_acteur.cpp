@@ -14,13 +14,12 @@ int Carte_acteur::Attaquer(int coordx, int coordy){
         case PARTIE_BATEAU:
             //std::cout << "Bateau touché !" << std::endl;
             carte -> SetCase(carte->GetCarteEnemyId(map_id),coordx, coordy, PARTIE_BATEAU_DETRUITE);
-            carte -> SetCase(map_id, coordx, coordy, TIR_REUSSI);
             rslt = 1;
             break;
         
         case MER:
             //std::cout << "Tir raté !" << std::endl;
-            carte -> SetCase(map_id, coordx, coordy, TIR_RATE);
+            carte -> SetCase(carte->GetCarteEnemyId(map_id), coordx, coordy, TIR_RATE);
             break;
 
         case TIR_RATE:
@@ -95,7 +94,14 @@ void Carte_acteur::PlacerBateau(int coordx, int coordy, type_bateau bateau, orie
     }
 }
 
-void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
+void Carte_acteur :: AfficherTypeCase(type_case type, char caractere, int id_map){
+    int target_id;
+    if(id_map != -1){
+        target_id = id_map;
+    } else {
+        target_id = this->map_id;
+    }
+
     std::cout << "\t";
     for(int x = 0; x < CARTE_X; x++){
         std::cout << char('A' + x) << " ";
@@ -108,23 +114,25 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
             if((particles->isAnimationRunning()) && particles->GetParticleAtLocation(x, y).alive && type == TIR_RATE){
                 std::cout << particles->GetParticleAtLocation(x, y).ASCII_frames[particles->GetParticleAtLocation(x, y).current_frame];
             }else if(type == TIR_RATE){
-                if((carte -> GetCase(map_id, x, y)) == type){
-                    std::cout << caractere;
-                } else if((carte -> GetCase(map_id, x, y)) == TIR_REUSSI){
+                if((carte -> GetCase(target_id, x, y)) == TIR_RATE){
                     std::cout << "X";
+                } else if((carte -> GetCase(target_id, x, y)) == PARTIE_BATEAU_DETRUITE){
+                    std::cout << "@";
                 } else {
                     std::cout << ".";
                 }
             } else if(type == PARTIE_BATEAU){
-                if((carte -> GetCase(map_id, x, y)) == type){
+                if((carte -> GetCase(target_id, x, y)) == PARTIE_BATEAU){
                     std::cout << "#";
-                } else if((carte -> GetCase(map_id, x, y)) == PARTIE_BATEAU_DETRUITE){
+                } else if((carte -> GetCase(target_id, x, y)) == PARTIE_BATEAU_DETRUITE){
+                    std::cout << "@";
+                } else if((carte -> GetCase(target_id, x, y)) == TIR_RATE) {
                     std::cout << "X";
                 } else {
                     std::cout << ".";
                 }
             } else {
-                if((carte -> GetCase(map_id, x, y)) == type){
+                if((carte -> GetCase(target_id, x, y)) == type){
                     std::cout << caractere;
                 } else {
                     std::cout << ".";
@@ -138,7 +146,7 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
 
 void Carte_acteur :: AffichierCarte(){
     std::cout << "Carte des tirs : " << std::endl;
-    AfficherTypeCase(TIR_RATE,'X');
+    AfficherTypeCase(TIR_RATE,'X', carte->GetCarteEnemyId(map_id));
     std::cout << "Carte de la flotte : " << std::endl;
     AfficherTypeCase(PARTIE_BATEAU, 'X');
 }

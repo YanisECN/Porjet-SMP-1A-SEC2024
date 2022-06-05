@@ -91,7 +91,7 @@ int main(void){
     cout << " \\_______________________________________________________________________|" << endl;
     cout << "SEC2024 - Bataille navalle - C. Jouin, C. Guidon, C. D'Ardhuy, Y. Keto" << endl;
 
-    cout << endl << "Entrez 0 si vous souhaitez jouer contre une IA ou entrez 1 si vous êtes 2 joueurs" << endl;
+    cout << endl << "Entrez 0 si vous souhaitez jouer contre une IA (indisponible) ou entrez 1 si vous êtes 2 joueurs" << endl;
     cin >> mode;
 
     //2 - Placement des bateaux Acteur 1

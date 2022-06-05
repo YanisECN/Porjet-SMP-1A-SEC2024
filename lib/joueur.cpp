@@ -55,7 +55,7 @@ void joueur::Attaquer(){
       this->Getcarte()->Clear_console();
     }
   }
-
+  particle_system->reset_particles();
   this->Getcarte()->AffichierCarte();
   this->Getcarte()->sleep_anim(.50);
 }
