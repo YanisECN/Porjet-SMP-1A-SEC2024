@@ -71,8 +71,8 @@ int main(void){
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;
 
-    acteur acteur1 = joueur(&carte_principale);
-    acteur acteur2 = joueur(&carte_principale);
+    joueur acteur1 = joueur(&carte_principale);
+    joueur acteur2 = joueur(&carte_principale);
 
     bool mode = 0;
   
