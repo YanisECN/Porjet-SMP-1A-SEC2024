@@ -9,6 +9,7 @@
 #include "carte_acteur.h"
 #include "acteur.h"
 #include "joueur.h"
+#include "IA.h"
 #include "particles.h"
 #include <iostream>
 #include <vector>
@@ -71,9 +72,6 @@ int main(void){
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;
 
-    joueur acteur1 = joueur(&carte_principale);
-    joueur acteur2 = joueur(&carte_principale);
-
     bool mode = 0;
   
     cout << "                                     |__" << endl;
@@ -94,8 +92,12 @@ int main(void){
     cout << endl << "Entrez 0 si vous souhaitez jouer contre une IA (indisponible) ou entrez 1 si vous êtes 2 joueurs" << endl;
     cin >> mode;
 
+    joueur acteur1 (&carte_principale);
+    joueur acteur2 (&carte_principale);
+
     //2 - Placement des bateaux Acteur 1
     Clear();
+
     cout<<endl<<"--JOUEUR 1--"<<endl;
   
     acteur1.Getcarte()->AfficherTypeCase(PARTIE_BATEAU, 'X');
