@@ -9,6 +9,7 @@
 #include "carte_acteur.h"
 #include "acteur.h"
 #include "joueur.h"
+#include "IA.h"
 #include "particles.h"
 #include <iostream>
 #include <vector>
@@ -71,8 +72,7 @@ int main(void){
     //1 - Initialisation carte et choix du mode de jeu
     Carte carte_principale;
 
-    joueur acteur1 = joueur(&carte_principale);
-    joueur acteur2 = joueur(&carte_principale);
+    
 
     bool mode = 0;
   
@@ -90,6 +90,18 @@ int main(void){
     cout << "|                                                                   BB-61/" << endl;
     cout << " \\_______________________________________________________________________|" << endl;
     cout << "SEC2024 - Bataille navalle - C. Jouin, C. Guidon, C. D'Ardhuy, Y. Keto" << endl;
+
+
+
+ // if (mode==0){
+    joueur acteur1(&carte_principale);
+    ia acteur2(&carte_principale);
+ //   }
+  
+ // if (mode==1){
+ //   joueur acteur1 (&carte_principale);
+   // joueur acteur2 (&carte_principale);
+    //}
 
     cout << endl << "Entrez 0 si vous souhaitez jouer contre une IA ou entrez 1 si vous êtes 2 joueurs" << endl;
     cin >> mode;
