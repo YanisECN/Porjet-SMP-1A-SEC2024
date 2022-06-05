@@ -73,9 +73,24 @@ int main(void){
 
     joueur acteur1 (&carte_principale);
     joueur acteur2 (&carte_principale);
-    
+
     bool mode = 0;
   
+    cout << "                                     |__" << endl;
+    cout << "                                     |\\/" << endl;
+    cout << "                                     ---" << endl;
+    cout << "                                     / | [" << endl;
+    cout << "                              !      | |||" << endl;
+    cout << "                            _/|     _/|-++'" << endl;
+    cout << "                        +  +--|    |--|--|_ |-" << endl;
+    cout << "                     { /|__|  |/\\__|  |--- |||__/" << endl;
+    cout << "                    +---------------___[}-_===_.\'____               /\\" << endl;
+    cout << "                ____`-' ||___-{]_| _[}-  |     |_[___\\==--          \\/   _" << endl;
+    cout << " __..._____--==/___]_|__|_____________________________[___\\==--___,-----\' .7" << endl;
+    cout << "|                                                                   BB-61/" << endl;
+    cout << " \\_______________________________________________________________________|" << endl;
+    cout << "SEC2024 - Bataille navalle - C. Jouin, C. Guidon, C. D'Ardhuy, Y. Keto" << endl;
+
     cout << endl << "Entrez 0 si vous souhaitez jouer contre une IA ou entrez 1 si vous êtes 2 joueurs" << endl;
     cin >> mode;
 
