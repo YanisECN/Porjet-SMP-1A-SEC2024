@@ -111,15 +111,15 @@ void Carte_acteur :: AfficherTypeCase(type_case type, char caractere){
                 if((carte -> GetCase(map_id, x, y)) == type){
                     std::cout << caractere;
                 } else if((carte -> GetCase(map_id, x, y)) == TIR_REUSSI){
-                    std::cout << (char)176u;
+                    std::cout << "X";
                 } else {
                     std::cout << ".";
                 }
             } else if(type == PARTIE_BATEAU){
                 if((carte -> GetCase(map_id, x, y)) == type){
-                    std::cout << (char)178u;
+                    std::cout << "#";
                 } else if((carte -> GetCase(map_id, x, y)) == PARTIE_BATEAU_DETRUITE){
-                    std::cout << (char)176u;
+                    std::cout << "X";
                 } else {
                     std::cout << ".";
                 }
