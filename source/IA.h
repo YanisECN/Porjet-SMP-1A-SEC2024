@@ -15,5 +15,5 @@ public :
     void Attaquer();
     void Placerbateaux(int x, int y, type_bateau bateau, orientation orientation);
     
-}
+};
 
